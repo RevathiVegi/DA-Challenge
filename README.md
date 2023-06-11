@@ -234,7 +234,7 @@ In order to see the results of the above questions run the following commands
     ```
     ```markdown
         totalusers
-0        5699
+      0        5699
     ```
     * [ ] please break the counts down by patient, professional, and combined (patient and professional) users
     ```commandline
@@ -242,7 +242,7 @@ In order to see the results of the above questions run the following commands
     ```
     ```markdown
         patient  professional  combined
-0        5586           102      5688
+       0        5586           102      5688
     ```
     * [ ] what is the age distribution of our users?
     ```commandline
@@ -250,17 +250,17 @@ In order to see the results of the above questions run the following commands
     ```
     ```markdown
         age  count
- 0      0.0      4
- 1      1.0      9
- 2      2.0     11
- 3      3.0     29
- 4      4.0     33
- ..     ...    ...
- 88    88.0      5
- 89    89.0      8
- 90    90.0     19
- 91  1019.0      1
- 92     NaN    104
+    0      0.0      4
+    1      1.0      9
+    2      2.0     11
+    3      3.0     29
+    4      4.0     33
+    ..     ...    ...
+    88    88.0      5
+    89    89.0      8
+    90    90.0     19
+    91  1019.0      1
+    92     NaN    104
     ```
     * [ ] what is the distribution of diabetes type?
     ```commandline
@@ -313,7 +313,7 @@ In order to see the results of the above questions run the following commands
    ```
    ```markdown
         active_users_past_year  active_users_past_month
-  0                      67                        0
+     0                      67                        0
    ```
     
 NOTE: To answer this question, an active professional user is one that is viewing patients data in our webapp
@@ -338,9 +338,9 @@ NOTE: To answer this question, an active professional user is one that is viewin
     ```
     ```markdown
      clinic_id__deid  active_professionals
-0  23d03f88cb92d3a8ea34ccc8367270470da99f1374b6cf...                     5
-1  88cab224152d143aceb1b2c58f5ee2580d103fd9a45408...                    59
-2  cf0129a6652f537ac2481ceeef67b1ee13781c5e3c1bf4...                    15
+    0  23d03f88cb92d3a8ea34ccc8367270470da99f1374b6cf...                     5
+    1  88cab224152d143aceb1b2c58f5ee2580d103fd9a45408...                    59
+    2  cf0129a6652f537ac2481ceeef67b1ee13781c5e3c1bf4...                    15
     ```
 
 
@@ -351,8 +351,8 @@ NOTE: To answer this question, an active professional user is one that is viewin
     ```
     ```markdown
                                          clinic_id__deid  active_patients
-0  88cab224152d143aceb1b2c58f5ee2580d103fd9a45408...             1111
-1  05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...                1
+    0  88cab224152d143aceb1b2c58f5ee2580d103fd9a45408...             1111
+    1  05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...                1
     ```
 
 * [ ] do you see any trends regarding our clinics?
@@ -375,11 +375,11 @@ into our platform. Please quantify the types of devices people are using.
         python3 example_get_data_from_sql_file.py sql/devices_syncing.sql
     ```
     ```markdown
-   source_type   count
-0     bg_meter    1014
-1   cgm_device   21175
-2  insulin_pen       1
-3         pump  482543
+        source_type   count
+    0     bg_meter    1014
+    1   cgm_device   21175
+    2  insulin_pen       1
+    3         pump  482543
     ```
 
 
@@ -389,18 +389,18 @@ into our platform. Please quantify the types of devices people are using.
         python3 example_get_data_from_sql_file.py sql/clinics_devices.sql
     ```
     ```markdown
-                                           clinic_id__deid source_type  count
-0    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...    bg_meter      5
-1    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...  cgm_device    174
-2    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...        pump   1738
-3    05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...  cgm_device      5
-4    05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...        pump      2
-..                                                 ...         ...    ...
-114  f4ba5cda9ee3927397d5f1f6a65ee25e96a83ae4f2418c...        pump   1838
-115  fa12e95085f122db1d3939206294cccdc3dfe85e98ee47...    bg_meter      1
-116  fb0365dbd2cb5cfb8d0e3cc564247801c20d53121b3dbd...    bg_meter      1
-117  fb0365dbd2cb5cfb8d0e3cc564247801c20d53121b3dbd...        pump    644
-118  fd496a6c0a044cadaec8febc3429afa7549ef72532aaf2...        pump      2
+                                                  clinic_id__deid source_type  count
+         0    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...    bg_meter      5
+         1    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...  cgm_device    174
+         2    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...        pump   1738
+         3    05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...  cgm_device      5
+         4    05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...        pump      2
+         ..                                                 ...         ...    ...
+        114  f4ba5cda9ee3927397d5f1f6a65ee25e96a83ae4f2418c...        pump   1838
+        115  fa12e95085f122db1d3939206294cccdc3dfe85e98ee47...    bg_meter      1
+        116  fb0365dbd2cb5cfb8d0e3cc564247801c20d53121b3dbd...    bg_meter      1
+        117  fb0365dbd2cb5cfb8d0e3cc564247801c20d53121b3dbd...        pump    644
+        118  fd496a6c0a044cadaec8febc3429afa7549ef72532aaf2...        pump      2
     ```
 
 # Final Steps

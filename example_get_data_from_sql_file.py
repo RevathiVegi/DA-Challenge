@@ -1,5 +1,6 @@
 import pandas as pd
 import psycopg2
+import sys
 
 
 def get_df_from_sql_file(filename_and_path):
@@ -29,8 +30,13 @@ def get_df_from_sql_file(filename_and_path):
 
     return result_df
 
+if __name__=='__main__':
+    if len(sys.argv[1])>1:
+        sql_file = sys.argv[1]
+        example_df = get_df_from_sql_file(filename_and_path=sql_file)
 
-example_df = get_df_from_sql_file(filename_and_path="example_sql_file.sql")
+else:
+    example_df = get_df_from_sql_file(filename_and_path="example_sql_file.sql")
 
 # Print the resulting dataframe
 print(example_df)

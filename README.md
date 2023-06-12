@@ -31,7 +31,8 @@ The only restrictions are that you work independently, do not share the data, or
 
 Please insert your name and start date on the next line:
 ```markdown
-I <insert your name> started the challenge on <enter the current date and time>
+I Revathi Vegi started the challenge on 10.06.2023 at 1600hours
+
 ```
 
 # Getting Started with the Github Repo
@@ -173,9 +174,9 @@ But, to state the obvious, if you remove the container, you will need to re-buil
 Please be honest, how long did it take you to get to this point in process. 
 Please fill in the <> with your response: 
 ```markdown
-It took me <insert amount of time > to get to this point in the instructions.
-I was <able, not able> to get the docker container to run.
-I was <able, not able> to get pytests to pass.
+It took me 25minutes to get to this point in the instructions.
+I was able to get the docker container to run.
+I was able to get pytests to pass.
 ```
 
 # The DA Challenge Problem
@@ -226,15 +227,102 @@ please answer the following:
     * [ ] what is the age distribution of our users?
     * [ ] what is the distribution of diabetes type?
 
+In order to see the results of the above questions run the following commands
+* [ ] how many all-time users do we have? 
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/all_time_users.sql
+    ```
+    ```markdown
+        totalusers
+      0        5699
+    ```
+    * [ ] please break the counts down by patient, professional, and combined (patient and professional) users
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/counts_by_user_type.sql
+    ```
+    ```markdown
+        patient  professional  combined
+       0        5586           102      5688
+    ```
+    * [ ] what is the age distribution of our users?
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/age.sql
+    ```
+    ```markdown
+        age  count
+    0      0.0      4
+    1      1.0      9
+    2      2.0     11
+    3      3.0     29
+    4      4.0     33
+    ..     ...    ...
+    88    88.0      5
+    89    89.0      8
+    90    90.0     19
+    91  1019.0      1
+    92     NaN    104
+    ```
+    * [ ] what is the distribution of diabetes type?
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/diabetes_type.sql
+    ```
+    ```markdown
+        diabetes_type  count
+      0          None   4800
+      1   gestational      3
+      2          none      3
+      3        type_1    790
+      4          lada      2
+      5        type_2     72
+      6         other     29
+    ```
+
 * [ ] how many active patient users have we had over the past year? and over the past month? 
 NOTE: To answer this question, an active patient user is one that is actively syncing device data
+    
     * [ ] do you see any trends with our active patient users? 
     * [ ] please use your favorite python plotting tool to visualize the trends
 
+In order to see the results of the above questions run the following commands
+* [ ] how many active patient users have we had over the past year? and over the past month? 
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/active_patient_users.sql
+    ```
+    ```markdown
+         active_patient_users_past_year  active_patient_users_past_month
+                  0                            1196                                1
+    ```
+
+NOTE: To answer this question, an active patient user is one that is actively syncing device data
+    * [ ] do you see any trends with our active patient users? 
+    * [ ] please use your favorite python plotting tool to visualize the trends
+    ```commandline
+        python3 active_patients.py
+    ```
 * [ ] how many active professional users have we had over the past year and the past month? 
+   
 NOTE: To answer this question, an active professional user is one that is viewing patients data in our webapp
     * [ ] do you see any trends with our active professional users?
     * [ ] please use your favorite python plotting tool to visualize the trends
+
+In order to see the results of the above questions run the following commands
+* [ ] how many active professional users have we had over the past year and the past month? 
+
+   ```commandline
+       python3 example_get_data_from_sql_file.py sql/active_professionals_users.sql
+   ```
+   ```markdown
+        active_users_past_year  active_users_past_month
+     0                      67                        0
+   ```
+    
+NOTE: To answer this question, an active professional user is one that is viewing patients data in our webapp
+    * [ ] do you see any trends with our active professional users?
+    * [ ] please use your favorite python plotting tool to visualize the trends
+
+   ```commandline 
+       python3 active_professionals.py
+   ```
 
 ### clinics and professional users
 * [ ] how many active professional users does each clinic have?
@@ -242,21 +330,87 @@ NOTE: To answer this question, an active professional user is one that is viewin
 * [ ] do you see any trends regarding our clinics?
 * [ ] please use your favorite python plotting tool to visualize the trends
 
+### clinics and professional users
+* [ ] how many active professional users does each clinic have?
+
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/active_professional_clinic.sql
+    ```
+    ```markdown
+     clinic_id__deid  active_professionals
+    0  23d03f88cb92d3a8ea34ccc8367270470da99f1374b6cf...                     5
+    1  88cab224152d143aceb1b2c58f5ee2580d103fd9a45408...                    59
+    2  cf0129a6652f537ac2481ceeef67b1ee13781c5e3c1bf4...                    15
+    ```
+
+
+* [ ] of the clinics that have professional users, which clinic has the most and least active patient users?
+
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/most_least_active_patients.sql
+    ```
+    ```markdown
+                                         clinic_id__deid  active_patients
+    0  88cab224152d143aceb1b2c58f5ee2580d103fd9a45408...             1111
+    1  05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...                1
+    ```
+
+* [ ] do you see any trends regarding our clinics?
+* [ ] please use your favorite python plotting tool to visualize the trends
+```commandline 
+       python3 clinical_trends.py
+   ```
+
+
 ### devices
 * [ ] the product team wants to understand which devices (and combinations of devices) our users are syncing (uploading)
 into our platform. Please quantify the types of devices people are using. 
 * [ ] please comment on whether some clinics use certain devices or combinations of devices more than others
   
+
+* [ ] the product team wants to understand which devices (and combinations of devices) our users are syncing (uploading)
+into our platform. Please quantify the types of devices people are using. 
+
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/devices_syncing.sql
+    ```
+    ```markdown
+        source_type   count
+    0     bg_meter    1014
+    1   cgm_device   21175
+    2  insulin_pen       1
+    3         pump  482543
+    ```
+
+
+* [ ] please comment on whether some clinics use certain devices or combinations of devices more than others
+
+    ```commandline
+        python3 example_get_data_from_sql_file.py sql/clinics_devices.sql
+    ```
+    ```markdown
+                                                  clinic_id__deid source_type  count
+         0    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...    bg_meter      5
+         1    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...  cgm_device    174
+         2    056a3d3cfbf5f357e8e347f4ca222ae9fa6fd74406f1a3...        pump   1738
+         3    05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...  cgm_device      5
+         4    05a4ad03cb48635886131c21d8c205b374f0baeff27f6f...        pump      2
+         ..                                                 ...         ...    ...
+        114  f4ba5cda9ee3927397d5f1f6a65ee25e96a83ae4f2418c...        pump   1838
+        115  fa12e95085f122db1d3939206294cccdc3dfe85e98ee47...    bg_meter      1
+        116  fb0365dbd2cb5cfb8d0e3cc564247801c20d53121b3dbd...    bg_meter      1
+        117  fb0365dbd2cb5cfb8d0e3cc564247801c20d53121b3dbd...        pump    644
+        118  fd496a6c0a044cadaec8febc3429afa7549ef72532aaf2...        pump      2
+    ```
+
 # Final Steps
 Once you have completed all of your work, please take a minute to update this readme with instructions on how to 
 review your work. Please commit all of the files/code you created, and submit a pull request to the 
 gihub handles list above. Also let Mark know that you completed the challenge. 
 
 ## Final Wrap Up
-How long did it take you to do the challenge?  
-Please fill in the <> with your response: 
+How long did it take you to do the challenge?   
 ```markdown
-I spent <insert amount of time > on the challenge problem.
-I thought it was <easy, moderate, difficult>.
-<pile on anything else you want us to know>
+I spent almost 4 hours on the challenge problem.
+I thought it was moderate and enjoyed thoroughly as it covered different aspects of the project namely git, docker, sql, python
 ```
